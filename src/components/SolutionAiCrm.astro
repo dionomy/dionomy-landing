@@ -1,5 +1,5 @@
 ---
-import CheckList from "./ui/CheckList.astro";
+import SolutionCopy from "./SolutionCopy.astro";
 import { solutions } from "../data/solutions";
 import {
   careCards,
@@ -10,7 +10,6 @@ import {
 } from "../data/care";
 
 const s = solutions.find((x) => x.id === "ai-crm")!;
-const titleLines = s.title.split("\n");
 
 const riskStyle: Record<RiskLevel, string> = {
   high: "bg-signal-risk-soft text-rose-700",
@@ -27,25 +26,7 @@ const riskDot: Record<RiskLevel, string> = {
 <div class="container-content grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
   <!-- copy -->
   <div class="reveal lg:sticky lg:top-28">
-    <div class="flex items-center gap-3">
-      <span
-        class="grid size-9 place-items-center rounded-xl bg-brand text-sm font-bold text-on-brand"
-        >{s.number}</span
-      >
-      <span class="text-sm font-semibold text-brand-strong">{s.eyebrow}</span>
-    </div>
-    <h3 class="mt-5 text-h2 text-fg">
-      {
-        titleLines.map((line, i) => (
-          <>
-            {line}
-            {i < titleLines.length - 1 && <br />}
-          </>
-        ))
-      }
-    </h3>
-    <p class="mt-5 whitespace-pre-line text-lead text-fg-muted">{s.lead}</p>
-    <CheckList items={s.points} class="mt-7" />
+    <SolutionCopy solution={s} />
 
     <!-- trust badge -->
     <div

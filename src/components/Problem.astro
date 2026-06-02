@@ -1,14 +1,12 @@
 ---
 import Eyebrow from "./ui/Eyebrow.astro";
+import Multiline from "./ui/Multiline.astro";
 import {
   problemEyebrow,
   problemHeading,
   problemLead,
   problemSteps,
-  problemClosing,
 } from "../data/problem";
-
-const headingLines = problemHeading.split("\n");
 ---
 
 <section id="problem" class="section-y bg-bg-subtle">
@@ -16,14 +14,7 @@ const headingLines = problemHeading.split("\n");
     <div class="reveal mx-auto max-w-2xl text-center">
       <Eyebrow>{problemEyebrow}</Eyebrow>
       <h2 class="mt-5 text-h2 text-fg">
-        {
-          headingLines.map((line, i) => (
-            <>
-              {line}
-              {i < headingLines.length - 1 && <br />}
-            </>
-          ))
-        }
+        <Multiline text={problemHeading} />
       </h2>
       <p class="mt-5 text-lead text-fg-muted">{problemLead}</p>
     </div>
@@ -65,11 +56,5 @@ const headingLines = problemHeading.split("\n");
         ))
       }
     </ol>
-
-    <!-- <p
-      class="reveal mx-auto mt-14 max-w-2xl text-center text-h3 font-semibold text-balance text-fg"
-    >
-      {problemClosing}
-    </p> -->
   </div>
 </section>

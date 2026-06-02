@@ -1,11 +1,11 @@
 ---
+import CheckIcon from "./ui/CheckIcon.astro";
+import Multiline from "./ui/Multiline.astro";
 import {
   academyCategories,
   finalCtaHeading,
   finalCtaLead,
 } from "../data/categories";
-
-const headingLines = finalCtaHeading.split("\n");
 ---
 
 <section id="apply" class="section-y">
@@ -33,14 +33,7 @@ const headingLines = finalCtaHeading.split("\n");
         <!-- copy -->
         <div class="reveal text-on-brand">
           <h2 class="text-h2 leading-[1.18] font-bold text-balance">
-            {
-              headingLines.map((line, i) => (
-                <>
-                  {line}
-                  {i < headingLines.length - 1 && <br />}
-                </>
-              ))
-            }
+            <Multiline text={finalCtaHeading} />
           </h2>
           <p
             class="mt-5 max-w-md text-[1.02rem] leading-relaxed text-on-brand/85"
@@ -152,11 +145,7 @@ const headingLines = finalCtaHeading.split("\n");
                       ))
                     }
                   </ul>
-                  <input
-                    type="hidden"
-                    name="category"
-                    data-combo-input
-                  />
+                  <input type="hidden" name="category" data-combo-input />
                 </div>
                 <p class="field-error" data-combo-error hidden>
                   카테고리를 선택해 주세요.
@@ -185,16 +174,7 @@ const headingLines = finalCtaHeading.split("\n");
               <div
                 class="mx-auto grid size-14 place-items-center rounded-full bg-signal-ok-soft"
               >
-                <svg
-                  class="size-7 text-signal-ok"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.3 3.3 6.8-6.8a1 1 0 0 1 1.4 0Z"
-                    clip-rule="evenodd"></path>
-                </svg>
+                <CheckIcon class="size-7 text-signal-ok" />
               </div>
               <p class="mt-4 text-h3 font-bold text-fg">신청이 접수됐어요</p>
               <p class="mt-2 text-[0.92rem] text-fg-muted">
@@ -228,13 +208,15 @@ const headingLines = finalCtaHeading.split("\n");
   const comboBtn = combo?.querySelector<HTMLButtonElement>("[data-combo-btn]");
   const comboList = combo?.querySelector<HTMLElement>("[data-combo-list]");
   const comboValue = combo?.querySelector<HTMLElement>("[data-combo-value]");
-  const comboInput = combo?.querySelector<HTMLInputElement>("[data-combo-input]");
+  const comboInput =
+    combo?.querySelector<HTMLInputElement>("[data-combo-input]");
   const comboError = combo?.querySelector<HTMLElement>("[data-combo-error]");
   const comboOptions = Array.from(
     combo?.querySelectorAll<HTMLElement>("[data-combo-option]") ?? [],
   );
   const otherField = document.querySelector<HTMLElement>("[data-other-field]");
-  const otherInput = document.querySelector<HTMLInputElement>("[data-other-input]");
+  const otherInput =
+    document.querySelector<HTMLInputElement>("[data-other-input]");
   let activeIndex = -1;
 
   // 리스트를 body로 빼서(portal) 상위 박스의 overflow:hidden에 잘리지 않게 한다.
@@ -327,7 +309,9 @@ const headingLines = finalCtaHeading.split("\n");
         setActive((activeIndex + 1) % comboOptions.length);
       } else if (e.key === "ArrowUp") {
         e.preventDefault();
-        setActive((activeIndex - 1 + comboOptions.length) % comboOptions.length);
+        setActive(
+          (activeIndex - 1 + comboOptions.length) % comboOptions.length,
+        );
       } else if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         selectOption(opt);

@@ -32,18 +32,16 @@ src/
 │  ├─ problem.ts       조용한 이탈 3스텝
 │  ├─ solutions.ts     핵심 3솔루션 카피
 │  ├─ care.ts          AI 케어 카드(이번 주 챙길 수강생)
-│  ├─ themes.ts        화이트라벨 데모 프리셋
-│  ├─ differentiation.ts  경쟁사 비교표
 │  ├─ process.ts       도입 흐름
 │  ├─ pricing.ts       요금/얼리어답터 배너
 │  └─ categories.ts    신청 폼 카테고리 + 클로징 카피
 ├─ styles/global.css   디자인 토큰(@theme) · 베이스 · 유틸
 ├─ layouts/BaseLayout.astro   head/SEO/OG/JSON-LD · 폰트 · 스크롤 리빌
 ├─ components/
-│  ├─ ui/              Button · Eyebrow · PhoneFrame · CheckList · SectionHeader
+│  ├─ ui/              Button · Eyebrow · CheckList · CheckIcon · Multiline · SectionHeader
 │  ├─ Nav · Hero · Problem
-│  ├─ Solutions(→ SolutionHub · SolutionWhitelabel · SolutionAiCrm)
-│  ├─ Differentiation · Process · Pricing · FinalCta · Footer
+│  ├─ Solutions(→ SolutionHub · SolutionWhitelabel · SolutionAiCrm), SolutionCopy 공유 카피 블록
+│  ├─ Process · Pricing · FinalCta · Footer
 └─ pages/index.astro   단일 페이지 조립
 ```
 

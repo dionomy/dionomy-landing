@@ -1,6 +1,7 @@
 ---
 import SectionHeader from "./ui/SectionHeader.astro";
 import Button from "./ui/Button.astro";
+import CheckIcon from "./ui/CheckIcon.astro";
 import { pricingHeading, pricingLead, partnerBanner } from "../data/pricing";
 import { primaryCta } from "../data/navigation";
 ---
@@ -41,13 +42,7 @@ import { primaryCta } from "../data/navigation";
                   class="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-white/15 text-white"
                   aria-hidden="true"
                 >
-                  <svg class="size-3" viewBox="0 0 20 20" fill="currentColor">
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.3 3.3 6.8-6.8a1 1 0 0 1 1.4 0Z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
+                  <CheckIcon class="size-3" />
                 </span>
                 <span class="text-[0.95rem] leading-relaxed text-white/85">
                   {feature}

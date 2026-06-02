@@ -1,0 +1,25 @@
+---
+// 세 솔루션 섹션(Hub·Whitelabel·AiCrm)이 공유하는 카피 블록:
+// 번호 + eyebrow + 제목 + 리드 + 체크리스트. 추가 콘텐츠(예: 신뢰 배지)는
+// 이 컴포넌트 다음에 형제로 배치한다.
+import CheckList from "./ui/CheckList.astro";
+import Multiline from "./ui/Multiline.astro";
+import type { Solution } from "../data/solutions";
+
+interface Props {
+  solution: Solution;
+}
+const { solution } = Astro.props;
+---
+
+<div class="flex items-center gap-3">
+  <span
+    class="grid size-9 place-items-center rounded-xl bg-brand text-sm font-bold text-on-brand"
+    >{solution.number}</span
+  >
+  <span class="text-sm font-semibold text-brand-strong">{solution.eyebrow}</span
+  >
+</div>
+<h3 class="mt-5 text-h2 text-fg"><Multiline text={solution.title} /></h3>
+<p class="mt-5 text-lead whitespace-pre-line text-fg-muted">{solution.lead}</p>
+<CheckList items={solution.points} class="mt-7" />

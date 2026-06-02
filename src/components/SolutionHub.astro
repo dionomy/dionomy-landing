@@ -1,9 +1,8 @@
 ---
-import CheckList from "./ui/CheckList.astro";
+import SolutionCopy from "./SolutionCopy.astro";
 import { solutions } from "../data/solutions";
 
 const s = solutions.find((x) => x.id === "hub")!;
-const titleLines = s.title.split("\n");
 ---
 
 <div
@@ -11,25 +10,7 @@ const titleLines = s.title.split("\n");
 >
   <!-- copy -->
   <div class="reveal order-1">
-    <div class="flex items-center gap-3">
-      <span
-        class="grid size-9 place-items-center rounded-xl bg-brand text-sm font-bold text-on-brand"
-        >{s.number}</span
-      >
-      <span class="text-sm font-semibold text-brand-strong">{s.eyebrow}</span>
-    </div>
-    <h3 class="mt-5 text-h2 text-fg">
-      {
-        titleLines.map((line, i) => (
-          <>
-            {line}
-            {i < titleLines.length - 1 && <br />}
-          </>
-        ))
-      }
-    </h3>
-    <p class="mt-5 whitespace-pre-line text-lead text-fg-muted">{s.lead}</p>
-    <CheckList items={s.points} class="mt-7" />
+    <SolutionCopy solution={s} />
   </div>
 
   <!-- automation flow mockup -->

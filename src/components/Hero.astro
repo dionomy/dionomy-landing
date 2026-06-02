@@ -1,5 +1,6 @@
 ---
 import Button from "./ui/Button.astro";
+import CheckIcon from "./ui/CheckIcon.astro";
 import { primaryCta, secondaryCta } from "../data/navigation";
 ---
 
@@ -37,17 +38,7 @@ import { primaryCta, secondaryCta } from "../data/navigation";
 
       <dl class="mt-9 text-sm text-fg-subtle">
         <div class="flex items-center gap-2">
-          <svg
-            class="size-4 text-signal-ok"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.3 3.3 6.8-6.8a1 1 0 0 1 1.4 0Z"
-              clip-rule="evenodd"></path>
-          </svg>
+          <CheckIcon class="size-4 text-signal-ok" />
           <dt class="sr-only">모집 현황</dt>
           <dd>초기 10개 스튜디오 무료</dd>
         </div>

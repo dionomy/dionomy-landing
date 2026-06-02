@@ -28,5 +28,3 @@ export const problemSteps: ProblemStep[] = [
     body: "간격이 벌어지면 실력의 흐름이 끊기고, 만족도가 떨어지고, 어느 순간 말없이 발길이 끊깁니다.",
   },
 ];
-
-export const problemClosing = "야르렁";
