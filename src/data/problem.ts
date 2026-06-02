@@ -29,5 +29,4 @@ export const problemSteps: ProblemStep[] = [
   },
 ];
 
-export const problemClosing =
-  "그리고 원장님은, 그 이탈을 알아채지조차 못합니다.";
+export const problemClosing = "야르렁";

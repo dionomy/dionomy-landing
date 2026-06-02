@@ -3,10 +3,11 @@ import Button from "./ui/Button.astro";
 import { primaryCta, secondaryCta } from "../data/navigation";
 ---
 
-<section id="top" class="relative w-full overflow-hidden">
-  <!-- decorative background: right-weighted brand mesh, shaped + blurred.
-       Concentrated on the right half so the left-side copy stays crisp;
-       a left→right surface fade further protects text legibility. -->
+<section
+  id="top"
+  class="relative flex min-h-dvh w-full items-center overflow-hidden pt-[75.6px]"
+>
+  <!-- 그라데이션 -->
   <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
     <!-- soft ambient wash, top-right -->
     <div
@@ -70,8 +71,9 @@ import { primaryCta, secondaryCta } from "../data/navigation";
     </div>
   </div>
 
+  <!-- 컨테이너 -->
   <div
-    class="container-content grid items-center gap-14 pt-32 pb-20 md:pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:pb-28"
+    class="container-content my-auto grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]"
   >
     <!-- copy -->
     <div class="reveal max-w-xl">
@@ -84,7 +86,7 @@ import { primaryCta, secondaryCta } from "../data/navigation";
 
       <p class="mt-6 max-w-lg text-lead text-fg-muted">
         수업 일정, 클래스 노트, 재등록 안내까지. <br /> 카톡과 엑셀로 흩어지던 일을
-        한 곳에 모으고 관리하세요.
+        우리 앱에서 관리하세요.
       </p>
 
       <div class="mt-9 flex flex-wrap items-center gap-3">
@@ -96,24 +98,7 @@ import { primaryCta, secondaryCta } from "../data/navigation";
         </Button>
       </div>
 
-      <dl
-        class="mt-9 flex flex-wrap items-center gap-x-7 gap-y-3 text-sm text-fg-subtle"
-      >
-        <div class="flex items-center gap-2">
-          <svg
-            class="size-4 text-signal-ok"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.3 3.3 6.8-6.8a1 1 0 0 1 1.4 0Z"
-              clip-rule="evenodd"></path>
-          </svg>
-          <dt class="sr-only">수강생·강사 비용</dt>
-          <dd>수강생·강사 무료</dd>
-        </div>
+      <dl class="mt-9 text-sm text-fg-subtle">
         <div class="flex items-center gap-2">
           <svg
             class="size-4 text-signal-ok"
@@ -127,7 +112,7 @@ import { primaryCta, secondaryCta } from "../data/navigation";
               clip-rule="evenodd"></path>
           </svg>
           <dt class="sr-only">모집 현황</dt>
-          <dd>초기 10개 학원 무료 얼리어답터</dd>
+          <dd>초기 10개 스튜디오 무료</dd>
         </div>
       </dl>
     </div>

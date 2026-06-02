@@ -28,7 +28,7 @@ const titleLines = s.title.split("\n");
         ))
       }
     </h3>
-    <p class="mt-5 text-lead text-fg-muted">{s.lead}</p>
+    <p class="mt-5 whitespace-pre-line text-lead text-fg-muted">{s.lead}</p>
     <CheckList items={s.points} class="mt-7" />
   </div>
 
@@ -44,10 +44,17 @@ const titleLines = s.title.split("\n");
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2.5">
             <span
-              class="grid size-8 place-items-center rounded-full bg-bg-muted text-sm font-bold text-fg-muted"
-              >수</span
+              class="grid size-8 place-items-center rounded-full bg-bg-muted text-fg-muted"
             >
-            <p class="text-[0.9rem] font-medium text-fg">수강생 일정 변경</p>
+              <svg class="size-4" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M10 10a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm0 1.5c-3.2 0-6 1.8-6 4.3 0 .66.54 1.2 1.2 1.2h9.6c.66 0 1.2-.54 1.2-1.2 0-2.5-2.8-4.3-6-4.3Z"
+                ></path>
+              </svg>
+            </span>
+            <p class="text-[0.9rem] font-medium text-fg">
+              수강생 일정 변경 요청
+            </p>
           </div>
           <span
             class="rounded-pill bg-bg-subtle px-2.5 py-1 text-[0.7rem] font-semibold text-fg-muted"
@@ -58,7 +65,25 @@ const titleLines = s.title.split("\n");
 
       <div class="flow-connector"><span></span></div>
 
-      <!-- step 2: 시스템 자동 반영 -->
+      <!-- step 2: 양방향 알림 -->
+      <div class="grid grid-cols-2 gap-3">
+        <div class="rounded-2xl bg-bg p-3.5 shadow-sm ring-1 ring-border">
+          <p class="text-[0.7rem] font-medium text-fg-subtle">강사에게</p>
+          <p class="mt-1 text-[0.82rem] font-semibold text-fg">
+            변경 알림 발송
+          </p>
+        </div>
+        <div class="rounded-2xl bg-bg p-3.5 shadow-sm ring-1 ring-border">
+          <p class="text-[0.7rem] font-medium text-fg-subtle">수강생에게</p>
+          <p class="mt-1 text-[0.82rem] font-semibold text-fg">
+            확정 알림 발송
+          </p>
+        </div>
+      </div>
+
+      <div class="flow-connector"><span></span></div>
+
+      <!-- step 3: 시스템 자동 반영 -->
       <div class="rounded-2xl border border-brand-softer bg-brand-soft/70 p-4">
         <div class="flex items-center gap-2.5">
           <span
@@ -76,24 +101,6 @@ const titleLines = s.title.split("\n");
               차감·복구를 손대지 않아도
             </p>
           </div>
-        </div>
-      </div>
-
-      <div class="flow-connector flow-connector--split"><span></span></div>
-
-      <!-- step 3: 양방향 알림 -->
-      <div class="grid grid-cols-2 gap-3">
-        <div class="rounded-2xl bg-bg p-3.5 shadow-sm ring-1 ring-border">
-          <p class="text-[0.7rem] font-medium text-fg-subtle">강사에게</p>
-          <p class="mt-1 text-[0.82rem] font-semibold text-fg">
-            변경 알림 발송
-          </p>
-        </div>
-        <div class="rounded-2xl bg-bg p-3.5 shadow-sm ring-1 ring-border">
-          <p class="text-[0.7rem] font-medium text-fg-subtle">수강생에게</p>
-          <p class="mt-1 text-[0.82rem] font-semibold text-fg">
-            확정 알림 발송
-          </p>
         </div>
       </div>
     </div>
@@ -115,12 +122,5 @@ const titleLines = s.title.split("\n");
       var(--color-brand)
     );
     border-radius: 999px;
-  }
-  .flow-connector--split span {
-    background: linear-gradient(
-      to bottom,
-      var(--color-brand),
-      var(--color-border-strong)
-    );
   }
 </style>

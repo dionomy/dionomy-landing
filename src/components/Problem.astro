@@ -28,41 +28,48 @@ const headingLines = problemHeading.split("\n");
       <p class="mt-5 text-lead text-fg-muted">{problemLead}</p>
     </div>
 
-    <ol class="mt-14 grid gap-5 md:grid-cols-3 md:gap-6">
+    <ol
+      class="mt-14 grid gap-5 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-stretch md:gap-4"
+    >
       {
         problemSteps.map((step, i) => (
-          <li
-            class="reveal group relative flex flex-col rounded-panel border border-border bg-bg p-7 transition-shadow duration-300 hover:shadow-[0_24px_48px_-28px_rgba(32,29,74,0.35)]"
-            style={`--reveal-delay: ${i * 90}ms;`}
-          >
-            <span class="text-sm font-bold text-fg-faint">{step.index}</span>
-            <h3 class="mt-3 text-h3 text-fg">{step.title}</h3>
-            <p class="mt-3 text-[0.97rem] leading-relaxed text-fg-muted">
-              {step.body}
-            </p>
+          <>
+            <li
+              class="reveal flex flex-col rounded-panel border border-border bg-bg p-7 transition-shadow duration-300 hover:shadow-[0_24px_48px_-28px_rgba(32,29,74,0.35)]"
+              style={`--reveal-delay: ${i * 90}ms;`}
+            >
+              <span class="text-sm font-bold text-fg-faint">{step.index}</span>
+              <h3 class="mt-3 text-h3 text-fg">{step.title}</h3>
+              <p class="mt-3 text-[0.97rem] leading-relaxed text-fg-muted">
+                {step.body}
+              </p>
+            </li>
             {i < problemSteps.length - 1 && (
-              <span
-                class="absolute top-1/2 -right-3 z-10 hidden size-6 -translate-y-1/2 place-items-center rounded-full border border-border bg-bg text-fg-faint md:grid"
+              <li
+                class="hidden items-center justify-center md:flex"
+                role="presentation"
                 aria-hidden="true"
               >
-                <svg class="size-3.5" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    fill-rule="evenodd"
-                    d="M7.3 4.3a1 1 0 0 1 1.4 0l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 1 1-1.4-1.4L11.58 10 7.3 5.7a1 1 0 0 1 0-1.4Z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </span>
+                <span class="grid size-6 place-items-center rounded-full border border-border bg-bg text-brand shadow-[0_6px_16px_-6px_rgba(91,91,214,0.5)]">
+                  <svg class="size-3.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                      fill-rule="evenodd"
+                      d="M7.3 4.3a1 1 0 0 1 1.4 0l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 1 1-1.4-1.4L11.58 10 7.3 5.7a1 1 0 0 1 0-1.4Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </li>
             )}
-          </li>
+          </>
         ))
       }
     </ol>
 
-    <p
+    <!-- <p
       class="reveal mx-auto mt-14 max-w-2xl text-center text-h3 font-semibold text-balance text-fg"
     >
       {problemClosing}
-    </p>
+    </p> -->
   </div>
 </section>

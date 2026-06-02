@@ -92,9 +92,9 @@
   --color-signal-ok-soft: var(--color-emerald-50);
 
   /* ── typography ──────────────────────────────────────────────────────── */
-  --font-sans: "Pretendard Variable", "Pretendard", -apple-system,
-    BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Malgun Gothic",
-    "맑은 고딕", sans-serif;
+  --font-sans:
+    "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont,
+    system-ui, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
 
   /* fluid display scale */
   --text-display: clamp(2.2rem, 1.4rem + 3.6vw, 3.75rem);
@@ -200,7 +200,8 @@
   .js .reveal {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.7s var(--ease-out-soft),
+    transition:
+      opacity 0.7s var(--ease-out-soft),
       transform 0.7s var(--ease-out-soft);
     transition-delay: var(--reveal-delay, 0ms);
     will-change: opacity, transform;
