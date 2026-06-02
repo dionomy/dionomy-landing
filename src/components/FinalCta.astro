@@ -163,6 +163,17 @@ const headingLines = finalCtaHeading.split("\n");
                 </p>
               </div>
 
+              <div class="field other-field" data-other-field hidden>
+                <label for="f-category-other">어떤 스튜디오인가요?</label>
+                <input
+                  id="f-category-other"
+                  name="categoryOther"
+                  type="text"
+                  placeholder="예: 클라이밍 · 요가 · 공방 등"
+                  data-other-input
+                />
+              </div>
+
               <button type="submit" class="submit-btn">무료로 신청하기</button>
               <p class="text-center text-[0.78rem] text-fg-faint">
                 제출하시면 영업일 기준 1~2일 내에 연락드립니다.
@@ -222,7 +233,27 @@ const headingLines = finalCtaHeading.split("\n");
   const comboOptions = Array.from(
     combo?.querySelectorAll<HTMLElement>("[data-combo-option]") ?? [],
   );
+  const otherField = document.querySelector<HTMLElement>("[data-other-field]");
+  const otherInput = document.querySelector<HTMLInputElement>("[data-other-input]");
   let activeIndex = -1;
+
+  // 리스트를 body로 빼서(portal) 상위 박스의 overflow:hidden에 잘리지 않게 한다.
+  if (comboList) document.body.appendChild(comboList);
+
+  // 열릴 때마다 버튼 위치 기준으로 fixed 좌표를 계산한다(아래 공간 부족하면 위로).
+  function positionCombo() {
+    if (!comboBtn || !comboList) return;
+    const r = comboBtn.getBoundingClientRect();
+    comboList.style.left = `${r.left}px`;
+    comboList.style.width = `${r.width}px`;
+    const listH = comboList.offsetHeight;
+    const spaceBelow = window.innerHeight - r.bottom;
+    if (spaceBelow < listH + 8 && r.top > listH + 8) {
+      comboList.style.top = `${r.top - listH - 6}px`;
+    } else {
+      comboList.style.top = `${r.bottom + 6}px`;
+    }
+  }
 
   function setActive(index: number) {
     activeIndex = index;
@@ -236,6 +267,7 @@ const headingLines = finalCtaHeading.split("\n");
     if (!comboList || !comboBtn) return;
     comboList.hidden = false;
     comboBtn.setAttribute("aria-expanded", "true");
+    positionCombo();
     const selected = comboOptions.findIndex(
       (o) => o.getAttribute("aria-selected") === "true",
     );
@@ -261,7 +293,17 @@ const headingLines = finalCtaHeading.split("\n");
       o.setAttribute("aria-selected", o === opt ? "true" : "false"),
     );
     comboError?.setAttribute("hidden", "");
+
+    // "기타" 선택 시 직접 입력 필드 노출
+    if (otherField && otherInput) {
+      const isOther = value === "기타";
+      otherField.hidden = !isOther;
+      otherInput.required = isOther;
+      if (!isOther) otherInput.value = "";
+    }
+
     closeCombo();
+    if (otherInput && value === "기타") otherInput.focus();
   }
 
   comboBtn?.addEventListener("click", () => {
@@ -299,7 +341,22 @@ const headingLines = finalCtaHeading.split("\n");
   });
 
   document.addEventListener("click", (e) => {
-    if (combo && !combo.contains(e.target as Node)) closeCombo(false);
+    const t = e.target as Node;
+    if (combo && !combo.contains(t) && !comboList?.contains(t)) {
+      closeCombo(false);
+    }
+  });
+
+  // 스크롤·리사이즈 시 열려 있으면 위치 재계산(fixed라 따라가야 함)
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (comboList && !comboList.hidden) positionCombo();
+    },
+    true,
+  );
+  window.addEventListener("resize", () => {
+    if (comboList && !comboList.hidden) positionCombo();
   });
 
   // ── form submit ───────────────────────────────────────────
@@ -419,10 +476,8 @@ const headingLines = finalCtaHeading.split("\n");
     transform: rotate(180deg);
   }
   .combo-list {
-    position: absolute;
-    z-index: 20;
-    inset-inline: 0;
-    top: calc(100% + 0.4rem);
+    position: fixed;
+    z-index: 1000;
     max-height: 15rem;
     overflow-y: auto;
     margin: 0;
@@ -482,6 +537,12 @@ const headingLines = finalCtaHeading.split("\n");
     margin-top: 0.4rem;
     font-size: 0.8rem;
     color: var(--color-signal-risk);
+  }
+  .other-field[hidden] {
+    display: none;
+  }
+  .other-field:not([hidden]) {
+    animation: combo-in 0.16s ease;
   }
 
   .submit-btn {

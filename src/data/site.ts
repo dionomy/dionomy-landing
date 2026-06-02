@@ -1,6 +1,6 @@
 export const site = {
   name: "Dionomy",
-  legalName: "낭만주식회사",
+  legalName: "nangman Corporation",
   url: "https://dionomy.app",
   email: "hello@dionomy.app", // TODO: 실제 문의 이메일로 교체
   defaultTitle: "Dionomy · 성인 취미 스튜디오를 위한 스튜디오 앱 빌더",
