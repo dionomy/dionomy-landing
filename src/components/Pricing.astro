@@ -6,7 +6,7 @@ import { pricingHeading, pricingLead, partnerBanner } from "../data/pricing";
 import { primaryCta } from "../data/navigation";
 ---
 
-<section id="pricing" class="section-y bg-bg-subtle">
+<section id="pricing" class="section-y bg-bg-subtle" data-ga-section="pricing">
   <div class="container-content">
     <SectionHeader eyebrow="요금" heading={pricingHeading} lead={pricingLead} />
 
@@ -65,7 +65,13 @@ import { primaryCta } from "../data/navigation";
 
         <div class="mt-10 flex justify-center">
           <div class="cta-float">
-            <Button href={primaryCta.href} variant="primary" size="lg">
+            <Button
+              href={primaryCta.href}
+              variant="primary"
+              size="lg"
+              event="cta_click"
+              eventLabel="pricing_primary"
+            >
               {primaryCta.label}
               <svg
                 class="size-5"
@@ -77,8 +83,8 @@ import { primaryCta } from "../data/navigation";
                 stroke-linejoin="round"
                 aria-hidden="true"
               >
-                <path d="M12 5v14" />
-                <path d="m19 12-7 7-7-7" />
+                <path d="M12 5v14"></path>
+                <path d="m19 12-7 7-7-7"></path>
               </svg>
             </Button>
           </div>

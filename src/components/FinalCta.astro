@@ -8,7 +8,7 @@ import {
 } from "../data/categories";
 ---
 
-<section id="apply" class="section-y">
+<section id="apply" class="section-y" data-ga-section="apply">
   <div class="container-content">
     <div
       class="relative overflow-hidden rounded-[2rem] bg-brand px-6 py-12 sm:px-10 sm:py-14 lg:px-14"
@@ -332,6 +332,9 @@ import {
 
     closeCombo();
     if (otherInput && value === "기타") otherInput.focus();
+
+    // 어떤 스튜디오 유형이 관심 많은지 — "기타"는 직접입력값 합쳐 별도 기록
+    track("apply_category_select", { category: value });
   }
 
   comboBtn?.addEventListener("click", () => {
@@ -437,7 +440,11 @@ import {
   });
 
   function onSuccess() {
-    track("generate_lead", { method: "early_adopter" });
+    const cat = comboInput?.value ?? "";
+    track("generate_lead", {
+      method: "early_adopter",
+      category: cat === "기타" ? otherInput?.value || "기타" : cat,
+    });
     markApplied();
     if (form) form.hidden = true;
     if (success) success.hidden = false;
@@ -446,6 +453,8 @@ import {
 
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
+    track("apply_submit"); // 제출 시도(검증 통과 여부 무관)
+
     const categoryValid = !!comboInput?.value;
     if (!categoryValid) {
       comboError?.removeAttribute("hidden");
@@ -453,11 +462,10 @@ import {
     }
 
     // 연락처 형식 검증(네이티브 검증 메시지로 노출)
+    const phoneValid = !phoneInput || isValidPhone(phoneInput.value);
     if (phoneInput) {
       phoneInput.setCustomValidity(
-        isValidPhone(phoneInput.value)
-          ? ""
-          : "올바른 연락처를 입력해 주세요. 예: 010-0000-0000",
+        phoneValid ? "" : "올바른 연락처를 입력해 주세요. 예: 010-0000-0000",
       );
     }
 
@@ -467,8 +475,17 @@ import {
     consentField?.classList.toggle("has-error", !consentValid);
 
     const nativeValid = form.checkValidity();
-    if (!nativeValid) form.reportValidity();
-    if (!nativeValid || !categoryValid || !consentValid) return;
+    if (!nativeValid || !categoryValid || !consentValid) {
+      // 어디서 막혔는지 집계 — 마찰 지점 파악
+      const reasons: string[] = [];
+      if (!categoryValid) reasons.push("category");
+      if (!consentValid) reasons.push("consent");
+      if (!phoneValid) reasons.push("phone");
+      if (!nativeValid && phoneValid) reasons.push("missing_field");
+      track("apply_invalid", { reason: reasons.join(",") || "unknown" });
+      if (!nativeValid) form.reportValidity();
+      return;
+    }
 
     const data = Object.fromEntries(new FormData(form).entries());
 
@@ -497,6 +514,7 @@ import {
       if (!res.ok) throw new Error(`status ${res.status}`);
       onSuccess();
     } catch (err) {
+      track("apply_error", { message: String(err) });
       console.error("[dionomy] 신청 전송 실패:", err);
       if (submitBtn) {
         submitBtn.disabled = false;

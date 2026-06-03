@@ -16,6 +16,8 @@ import { navLinks, primaryCta } from "../data/navigation";
       href="#top"
       class="group inline-flex items-center gap-2.5 rounded-pill py-1 pr-2 text-fg"
       aria-label="Dionomy 홈"
+      data-ga-event="nav_click"
+      data-ga-label="logo"
     >
       <img
         src="/dionomy_logo.svg"
@@ -35,6 +37,8 @@ import { navLinks, primaryCta } from "../data/navigation";
             <a
               href={link.href}
               class="rounded-pill px-3.5 py-2 text-[0.95rem] font-medium text-fg-muted transition-colors hover:bg-bg-subtle hover:text-fg"
+              data-ga-event="nav_click"
+              data-ga-label={link.href.replace("#", "")}
             >
               {link.label}
             </a>
@@ -44,7 +48,13 @@ import { navLinks, primaryCta } from "../data/navigation";
     </ul>
 
     <div class="flex items-center gap-2">
-      <Button href={primaryCta.href} variant="primary" size="md">
+      <Button
+        href={primaryCta.href}
+        variant="primary"
+        size="md"
+        event="cta_click"
+        eventLabel="nav_primary"
+      >
         {primaryCta.label}
       </Button>
     </div>

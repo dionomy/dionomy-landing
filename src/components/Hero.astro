@@ -7,6 +7,7 @@ import { primaryCta, secondaryCta } from "../data/navigation";
 <section
   id="top"
   class="relative flex min-h-dvh w-full items-center overflow-hidden pt-[75.6px]"
+  data-ga-section="hero"
 >
   <!-- 컨테이너 -->
   <div
@@ -28,10 +29,22 @@ import { primaryCta, secondaryCta } from "../data/navigation";
       </p>
 
       <div class="mt-9 flex flex-wrap items-center gap-3">
-        <Button href={primaryCta.href} variant="primary" size="lg">
+        <Button
+          href={primaryCta.href}
+          variant="primary"
+          size="lg"
+          event="cta_click"
+          eventLabel="hero_primary"
+        >
           {primaryCta.label}
         </Button>
-        <Button href={secondaryCta.href} variant="secondary" size="lg">
+        <Button
+          href={secondaryCta.href}
+          variant="secondary"
+          size="lg"
+          event="cta_click"
+          eventLabel="hero_secondary"
+        >
           {secondaryCta.label}
         </Button>
       </div>

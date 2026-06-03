@@ -4,6 +4,10 @@ interface Props {
   variant?: "primary" | "secondary" | "ghost";
   size?: "md" | "lg";
   class?: string;
+  /** GA 이벤트 이름 (예: "cta_click"). 지정 시 클릭이 추적됨 */
+  event?: string;
+  /** GA 이벤트 라벨 (예: "hero_primary") */
+  eventLabel?: string;
 }
 
 const {
@@ -11,6 +15,8 @@ const {
   variant = "primary",
   size = "md",
   class: extra = "",
+  event,
+  eventLabel,
 } = Astro.props;
 
 const base =
@@ -30,6 +36,11 @@ const variants = {
 };
 ---
 
-<a href={href} class={`${base} ${sizes[size]} ${variants[variant]} ${extra}`}>
+<a
+  href={href}
+  class={`${base} ${sizes[size]} ${variants[variant]} ${extra}`}
+  data-ga-event={event}
+  data-ga-label={eventLabel}
+>
   <slot />
 </a>
