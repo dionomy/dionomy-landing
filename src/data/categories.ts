@@ -9,4 +9,4 @@ export const academyCategories = [
 
 export const finalCtaHeading = "모든 스튜디오 운영 \nDionomy와 함께해보세요";
 export const finalCtaLead =
-  "전용 앱과 AI 케어, 지금 무료로 함께 시작해 보세요. 스튜디오 운영의 새로운 시대, Dionomy가 함께합니다.";
+  "전용 앱과 AI 케어, 지금 무료로 함께 시작해 보세요. \n스튜디오 운영의 새로운 시대, Dionomy가 함께합니다.";

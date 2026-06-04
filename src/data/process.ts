@@ -4,9 +4,9 @@ export interface ProcessStep {
   body: string;
 }
 
-export const processHeading = "시작은 상담 한 번이면 충분합니다.";
+export const processHeading = "시작은 신청 한 번이면 충분합니다.";
 export const processLead =
-  "복잡한 세팅은 Dionomy가 맡습니다. 원장님은 평소처럼 스튜디오를 운영하시면 됩니다.";
+  "복잡한 세팅은 Dionomy가 해드립니다. 원장님의 목소리를 들려주세요.";
 
 export const processSteps: ProcessStep[] = [
   {

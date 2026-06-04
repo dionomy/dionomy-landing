@@ -5,7 +5,7 @@ export interface ProblemStep {
 }
 
 // "조용한 이탈(silent churn)" — 랜딩 전체를 관통하는 감정적 훅
-export const problemEyebrow = "조용한 이탈 (Silent churn)";
+export const problemEyebrow = "조용한 이탈";
 export const problemHeading =
   "수강생은 떠나기 전에\n작별 인사를 하지 않습니다.";
 export const problemLead =
