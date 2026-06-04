@@ -3,7 +3,6 @@ import SectionHeader from "./ui/SectionHeader.astro";
 import Button from "./ui/Button.astro";
 import CheckIcon from "./ui/CheckIcon.astro";
 import { pricingHeading, pricingLead, partnerBanner } from "../data/pricing";
-import { primaryCta } from "../data/navigation";
 ---
 
 <section id="pricing" class="section-y bg-bg-subtle" data-ga-section="pricing">
@@ -66,13 +65,13 @@ import { primaryCta } from "../data/navigation";
         <div class="mt-10 flex justify-center">
           <div class="cta-float">
             <Button
-              href={primaryCta.href}
+              href="#apply"
               variant="primary"
               size="lg"
               event="cta_click"
               eventLabel="pricing_primary"
             >
-              {primaryCta.label}
+              무료 얼리어답터 신청
               <svg
                 class="size-5"
                 viewBox="0 0 24 24"

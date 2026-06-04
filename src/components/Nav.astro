@@ -1,6 +1,6 @@
 ---
 import Button from "./ui/Button.astro";
-import { navLinks, primaryCta } from "../data/navigation";
+import { navLinks } from "../data/navigation";
 ---
 
 <header
@@ -49,13 +49,13 @@ import { navLinks, primaryCta } from "../data/navigation";
 
     <div class="flex items-center gap-2">
       <Button
-        href={primaryCta.href}
+        href="#apply"
         variant="primary"
         size="md"
         event="cta_click"
         eventLabel="nav_primary"
       >
-        {primaryCta.label}
+        무료 얼리어답터 신청
       </Button>
     </div>
   </nav>
