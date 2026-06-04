@@ -1,5 +1,4 @@
 ---
-import { footerLinks } from "../data/navigation";
 import { site } from "../data/site";
 ---
 
@@ -18,26 +17,6 @@ import { site } from "../data/site";
         </div>
       </div>
 
-      <nav class="flex flex-col gap-3" aria-label="푸터">
-        <p class="text-[0.8rem] font-semibold text-fg-subtle">바로가기</p>
-        <ul class="space-y-2.5">
-          {
-            footerLinks.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="text-[0.92rem] text-fg-muted transition-colors hover:text-brand"
-                  data-ga-event="nav_click"
-                  data-ga-label={`footer_${link.href.replace("#", "")}`}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
-
       <div class="flex flex-col gap-3">
         <p class="text-[0.8rem] font-semibold text-fg-subtle">문의</p>
         <a
@@ -52,7 +31,7 @@ import { site } from "../data/site";
     </div>
 
     <div
-      class="mt-10 flex flex-col gap-2 border-t border-border pt-6 text-[0.8rem] text-fg-faint sm:flex-row sm:items-center sm:justify-between"
+      class="mt-10 flex flex-col gap-2 border-t border-border pt-6 text-[0.8rem] text-fg-faint sm:mt-30 sm:flex-row sm:items-center sm:justify-between"
     >
       <p>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</p>
     </div>
