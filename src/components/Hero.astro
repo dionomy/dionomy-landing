@@ -1,7 +1,6 @@
 ---
 import Button from "./ui/Button.astro";
 import CheckIcon from "./ui/CheckIcon.astro";
-import { primaryCta, secondaryCta } from "../data/navigation";
 ---
 
 <section
@@ -18,8 +17,8 @@ import { primaryCta, secondaryCta } from "../data/navigation";
       <h1
         class="mt-6 text-display leading-[1.12] font-bold tracking-[-0.03em] text-balance text-fg"
       >
-        우리 스튜디오만을 위한<br />
-        <span class="text-brand">우리 스튜디오 어플</span>
+        스튜디오 운영,<br />
+        <span class="text-brand">나만의 앱으로</span>
       </h1>
 
       <p class="mt-6 max-w-lg text-lead text-fg-muted">
@@ -30,27 +29,29 @@ import { primaryCta, secondaryCta } from "../data/navigation";
 
       <div class="mt-9 flex flex-wrap items-center gap-3">
         <Button
-          href={primaryCta.href}
+          href="#apply"
           variant="primary"
           size="lg"
           event="cta_click"
           eventLabel="hero_primary"
         >
-          {primaryCta.label}
+          무료 얼리어답터 신청
         </Button>
         <Button
-          href={secondaryCta.href}
+          href="#solutions"
           variant="secondary"
           size="lg"
           event="cta_click"
           eventLabel="hero_secondary"
         >
-          {secondaryCta.label}
+          기능 살펴보기
         </Button>
       </div>
 
-      <dl class="mt-9 text-sm text-fg-subtle">
-        <div class="flex items-center gap-2">
+      <dl class="mt-9">
+        <div
+          class="inline-flex items-center gap-1.5 rounded-pill bg-signal-ok-soft px-3 py-1 text-sm font-semibold text-emerald-700"
+        >
           <CheckIcon class="size-4 text-signal-ok" />
           <dt class="sr-only">모집 현황</dt>
           <dd>초기 10개 스튜디오 무료</dd>
