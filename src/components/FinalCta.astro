@@ -406,9 +406,10 @@ import {
   const consentField = consentInput?.closest<HTMLElement>(".consent-field");
   const submitBtn = form?.querySelector<HTMLButtonElement>(".submit-btn");
 
-  // 연락처 검증: 숫자만 추출해 휴대폰 형식 확인 (010-0000-0000 등)
+  // 연락처 검증: 숫자만 추출해 11자리거나 기존 휴대폰 형식(010-0000-0000 등)이면 통과
   function isValidPhone(v: string) {
-    return /^01[016789]\d{7,8}$/.test(v.replace(/\D/g, ""));
+    const digits = v.replace(/\D/g, "");
+    return digits.length === 11 || /^01[016789]\d{7,8}$/.test(digits);
   }
 
   // GA 전환 이벤트 — gtag 미로드 시 안전하게 무시
