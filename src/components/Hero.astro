@@ -10,10 +10,10 @@ import CheckIcon from "./ui/CheckIcon.astro";
 >
   <!-- 컨테이너 -->
   <div
-    class="container-content my-auto grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]"
+    class="container-content my-auto grid items-center lg:grid-cols-[1.05fr_0.95fr] lg:gap-14"
   >
     <!-- copy -->
-    <div class="reveal max-w-xl">
+    <div class="reveal order-2 max-w-xl lg:order-1">
       <h1
         class="mt-6 text-display leading-[1.12] font-bold tracking-[-0.03em] text-balance text-fg"
       >
@@ -22,18 +22,22 @@ import CheckIcon from "./ui/CheckIcon.astro";
       </h1>
 
       <p class="mt-6 max-w-lg text-lead text-fg-muted">
-        수업 일정, 클래스 노트, 재등록 안내까지. <br /> 스튜디오 로고를 넣어 우리
-        스튜디오만의 앱을 만들고, <br />카톡과 엑셀로 흩어지던 일을 우리 앱에서
-        관리하세요.
+        수업 일정, 클래스 노트, 재등록 안내까지. <br class="hidden lg:block" /> 스튜디오
+        로고를 넣어 우리 스튜디오만의 앱을 만들고, <br
+          class="hidden lg:block"
+        />카톡과 엑셀로 흩어지던 일을 우리 앱에서 관리하세요.
       </p>
 
-      <div class="mt-9 flex flex-wrap items-center gap-3">
+      <div
+        class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+      >
         <Button
           href="#apply"
           variant="primary"
           size="lg"
           event="cta_click"
           eventLabel="hero_primary"
+          class="w-full sm:w-auto"
         >
           무료 얼리어답터 신청
         </Button>
@@ -43,6 +47,7 @@ import CheckIcon from "./ui/CheckIcon.astro";
           size="lg"
           event="cta_click"
           eventLabel="hero_secondary"
+          class="w-full sm:w-auto"
         >
           기능 살펴보기
         </Button>
@@ -60,11 +65,14 @@ import CheckIcon from "./ui/CheckIcon.astro";
     </div>
 
     <!-- app mockup -->
-    <div class="reveal relative" style="--reveal-delay: 120ms;">
+    <div
+      class="reveal relative order-1 lg:order-2"
+      style="--reveal-delay: 120ms;"
+    >
       <img
         src="/hero_mock.png"
         alt="Dionomy 앱 화면 미리보기 — 스튜디오 일정과 수업 관리"
-        class="h-full w-auto"
+        class="mx-auto block h-auto w-full max-w-xs sm:max-w-sm lg:mx-0 lg:h-full lg:w-auto lg:max-w-full"
       />
     </div>
   </div>
