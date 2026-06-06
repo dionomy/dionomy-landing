@@ -9,7 +9,7 @@ export const problemEyebrow = "조용한 이탈";
 export const problemHeading =
   "수강생은 떠나기 전에\n작별 인사를 하지 않습니다.";
 export const problemLead =
-  "성인 수강생은 본업과 약속 때문에 일정을 자주 바꿉니다. 그 작은 어긋남이 쌓이는 동안, 원장님은 아무 신호도 받지 못합니다.";
+  "성인 수강생은 본업과 약속 때문에 일정을 자주 바꿉니다. \n그 작은 어긋남이 쌓이는 동안, 원장님은 아무 신호도 받지 못합니다.";
 
 export const problemSteps: ProblemStep[] = [
   {
