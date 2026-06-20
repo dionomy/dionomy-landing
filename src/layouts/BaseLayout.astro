@@ -67,12 +67,15 @@ const orgJsonLd = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(orgJsonLd)}
+    />
 
     <Analytics />
   </head>
   <body>
-    <a href="#main" class="skip-link">본문으로 건너뛰기</a>
     <slot />
 
     <!-- scroll-reveal: adds .is-visible to .reveal elements as they enter view -->
@@ -98,24 +101,5 @@ const orgJsonLd = {
         items.forEach((el) => io.observe(el));
       }
     </script>
-
-    <style>
-      .skip-link {
-        position: absolute;
-        left: 1rem;
-        top: -3rem;
-        z-index: 100;
-        background: var(--color-brand);
-        color: var(--color-on-brand);
-        padding: 0.6rem 1rem;
-        border-radius: var(--radius-pill);
-        font-size: 0.9rem;
-        font-weight: 600;
-        transition: top 0.2s var(--ease-out-soft);
-      }
-      .skip-link:focus {
-        top: 1rem;
-      }
-    </style>
   </body>
 </html>
