@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# 런칭 시 dionomy.app로 교체 (astro.config.mjs의 site 값과 일치시킬 것)
+Sitemap: https://dionomy-landing.nangmans.com/sitemap-index.xml
